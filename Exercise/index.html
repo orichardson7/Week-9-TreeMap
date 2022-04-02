@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <script src="libs/echarts.min.js"></script>
+    <title>E-Charts Assignment</title>
+    <script src="../js/d3.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+    <div id="container" style="height: 100%"></div>
+    <script type="text/javascript">
+
+        //get container object and assign treeMap to init echarts with the container
+        let container = document.getElementById("container");
+        let treeMap = echarts.init(container); 
+
+        //Call setOptions to construct tree visualization
+        treeMap.setOption({
+            title: {
+                text: 'E-Charts Assignment',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+
+            series: [{
+                type: 'treemap',
+                visibleMin: 300,
+                upperLabel: {
+                    show: true,
+                    height: 30
+                },
+                label: {
+                    show: true,
+                    formatter: '{b}'
+                },
+                //Provided Styles
+                levels: [{
+                        itemStyle: {
+                            borderColor: '#555',
+                            borderWidth: 0,
+                            gapWidth: 10
+                        },
+                        upperLabel: {
+                            show: false
+                        }
+                    }, {
+                        itemStyle: {
+                            borderColor: '#52AB80',
+                            borderWidth: 5,
+                            gapWidth: 5
+                        },
+                        emphasis: {
+                            itemStyle: {
+                                borderColor: '#ccc'
+                            }
+                        }
+                    }, {
+                        itemStyle: {
+                            borderColor: '#e8aa63',
+                            borderWidth: 5,
+                            gapWidth: 1
+                        },
+                        emphasis: {
+                            itemStyle: {
+                                borderColor: '#ccc'
+                            }
+                        }
+                    }, {
+                        itemStyle: {
+                            borderColor: '#F0F4F3',
+                            borderWidth: 5,
+                            gapWidth: 1
+                        },
+                        emphasis: {
+                            itemStyle: {
+                                borderColor: '#ccc'
+                            }
+                        }
+                    }, {
+                        colorSaturation: [0.3, 0.55],
+                        itemStyle: {
+                            borderWidth: 5,
+                            gapWidth: 1,
+                            borderColorSaturation: 0.7
+                        }
+                    }],
+
+                //Data for tree map
+                data: [{
+                    name: 'A',
+                    value: 300,
+                    children: [{
+                        name: 'B',
+                        value: 140,
+                        children: [{
+                            name: 'D',
+                            value: 60
+                        }, {
+                            name: 'E',
+                            value: 80
+                        }]
+                    }, {
+                        name: 'C',
+                        value: 160,
+                        children: [{
+                            name: 'F',
+                            value: 40
+                        }, {
+                            name: 'G',
+                            value: 60
+                        }, {
+                            name: 'H',
+                            value: 60
+                        }]
+                    }]
+                }]
+            }]
+        },true);
+
+    </script>
+</body>
+</html>
